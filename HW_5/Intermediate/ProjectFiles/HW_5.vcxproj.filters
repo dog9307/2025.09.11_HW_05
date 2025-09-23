@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\HW_5.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\HW_5.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\HW_5Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\HW_5">
+      <UniqueIdentifier>{3B4C1FC6-0048-304F-8880-05F4875FC334}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\HW_5\CommonMacros.h">
+      <Filter>Source\HW_5</Filter>
+    </ClCompile>
+    <None Include="..\..\Source\HW_5\HW_5.Build.cs">
+      <Filter>Source\HW_5</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\HW_5\HW_5.cpp">
+      <Filter>Source\HW_5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\HW_5.h">
+      <Filter>Source\HW_5</Filter>
+    </ClCompile>
+    <Filter Include="Source\HW_5\Private">
+      <UniqueIdentifier>{35575D0A-E684-3705-9B2C-2A5D71C7EF79}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW0506GameMode.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05GimmickBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05MovingPlatformBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05WayPointInfo.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW06PlayerCharacter.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW06PlayerController.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\HW_5\Public">
+      <UniqueIdentifier>{74E580A1-A94D-3949-9A02-4EDE6F0E79E6}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW0506GameMode.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05GimmickBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05MovingPlatformBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05WayPointInfo.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW06PlayerCharacter.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW06PlayerController.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

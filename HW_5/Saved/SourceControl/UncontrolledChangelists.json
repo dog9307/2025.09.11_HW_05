@@ -1,0 +1,21 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/EOL_Content/Blueprints/Framework/GM_EOL_Content.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Blueprints/BP_TestBot.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Levels/CharacterTestLevel.umap",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Blueprints/BP_HW0506GameMode.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Blueprints/BP_HW06PlayerCharacter.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Blueprints/BP_HW06PlayerController.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Inputs/IA_HelicopterRise.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Levels/GimmickTestLevel.umap",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Blueprints/BP_HW05BasicMovingPlatform.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Blueprints/BP_TestBot.uasset"
+			]
+		}
+	]
+}
