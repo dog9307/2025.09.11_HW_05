@@ -45,13 +45,28 @@
     <Filter Include="Source\HW_5\Private">
       <UniqueIdentifier>{35575D0A-E684-3705-9B2C-2A5D71C7EF79}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\HW_5\Private\GimmickRotationInterface.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW0506GameMode.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05Elevator.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05ElevatorPager.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW05GimmickBase.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05InteractableGimmickBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW05MovingPlatformBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05RotatingMovingPlatform.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW05WayPointInfo.cpp">
@@ -63,16 +78,37 @@
     <ClCompile Include="..\..\Source\HW_5\Private\HW06PlayerController.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\InteractableInterface.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\OverlapableGimmickInterface.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\HW_5\Public">
       <UniqueIdentifier>{74E580A1-A94D-3949-9A02-4EDE6F0E79E6}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\HW_5\Public\GimmickRotationInterface.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW0506GameMode.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05Elevator.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05ElevatorPager.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW05GimmickBase.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05InteractableGimmickBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW05MovingPlatformBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05RotatingMovingPlatform.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW05WayPointInfo.h">
@@ -82,6 +118,12 @@
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW06PlayerController.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\InteractableInterface.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\OverlapableGimmickInterface.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
   </ItemGroup>

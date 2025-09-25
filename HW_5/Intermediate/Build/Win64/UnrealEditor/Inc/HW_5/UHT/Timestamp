@@ -1,6 +1,13 @@
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\GimmickRotationInterface.h
 C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW0506GameMode.h
-C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05GimmickBase.h
-C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05WayPointInfo.h
-C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW06PlayerController.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05ElevatorPager.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05Elevator.h
 C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05MovingPlatformBase.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05InteractableGimmickBase.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05WayPointInfo.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05GimmickBase.h
 C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW06PlayerCharacter.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW06PlayerController.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\HW05RotatingMovingPlatform.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\InteractableInterface.h
+C:\SpartaCoding\SpartaCoding\2025.09.11_HW_05\2025.09.11_HW_05\HW_5\Source\HW_5\Public\OverlapableGimmickInterface.h

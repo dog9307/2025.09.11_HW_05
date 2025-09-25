@@ -14,6 +14,12 @@
 				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Inputs/IA_HelicopterRise.uasset",
 				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Levels/GimmickTestLevel.umap",
 				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Blueprints/BP_HW05BasicMovingPlatform.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Blueprints/BP_HW05RotatingMovingPlatform.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Inputs/IA_BasicInteract.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Inputs/IA_HelicopterInteract.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Inputs/IMC_BasicMove.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Blueprints/BP_HW05ElevatorPager.uasset",
+				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_05/Blueprints/BP_HW05Elevator.uasset",
 				"C:/SpartaCoding/SpartaCoding/2025.09.11_HW_05/2025.09.11_HW_05/HW_5/Content/HW_06/Blueprints/BP_TestBot.uasset"
 			]
 		}

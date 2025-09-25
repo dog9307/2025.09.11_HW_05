@@ -44,7 +44,7 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
-	void Move(float DeltaTime);
+	virtual void Move(float DeltaTime);
 
 	void StartMove();
 

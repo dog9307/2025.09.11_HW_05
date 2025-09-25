@@ -1,9 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "OverlapableGimmickInterface.h"
 #include "HW06PlayerCharacter.generated.h"
 
 class UCapsuleComponent;
@@ -12,7 +11,7 @@ class UCameraComponent;
 struct FInputActionValue;
 
 UCLASS()
-class HW_5_API AHW06PlayerCharacter : public APawn
+class HW_5_API AHW06PlayerCharacter : public APawn, public IOverlapableGimmickInterface
 {
 	GENERATED_BODY()
 
@@ -26,6 +25,9 @@ protected:
 	TObjectPtr<USpringArmComponent> SpringArmComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Camera")
 	TObjectPtr<UCameraComponent> CameraComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Components")
+	TObjectPtr<UCapsuleComponent> InteractRange;
 
 	// Move
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player|Movement")
@@ -43,12 +45,15 @@ protected:
 	float JumpSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player|Jump")
 	float Gravity;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Jump")
-	float JumpAccel;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player|Jump")
+	float MaxJumpingDuration;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Jump")
 	bool bIsFalling;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Jump")
 	bool bIsCanDoubleJump;
+
+	float ReverseGravity;
+	FTimerHandle JumpingTimerHandler;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Movement")
 	FVector Direction;
@@ -84,18 +89,26 @@ public:
 	void StartSprint(const FInputActionValue& value);
 	void StopSprint(const FInputActionValue& value);
 
+	void Jump();
+	void StopJumping();
 	void StartJump(const FInputActionValue& value);
 	void StopJump(const FInputActionValue& value);
-
 
 	void CalcMeshRot();
 	void CalcVelocity();
 	void Falling(float DeltaTime);
 	void LandingCheck(float DeltaTime);
 
+	void StartInteract(const FInputActionValue& value);
+	void StopInteract(const FInputActionValue& value);
+
 	UFUNCTION(BlueprintPure, Category = "Movement")
 	inline bool IsFalling() const { return bIsFalling; }
 	inline bool IsCanDoubleJump() const { return bIsCanDoubleJump; }
 	inline void SetDoubleJump(bool& isCan) { bIsCanDoubleJump = isCan; }
+
+
+	void OnBeginGimmickOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& HitResult) override;
+	void OnEndGimmickOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) override;
 
 };

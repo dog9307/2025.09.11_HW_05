@@ -40,6 +40,8 @@ void AHW05MovingPlatformBase::Tick(float DeltaTime)
 
 void AHW05MovingPlatformBase::Move(float DeltaTime)
 {
+	if (WayPoints.Num() <= 0) return;
+
 	CurrentTime += DeltaTime;
 
 	const FWayPointInfo& CurrentPoint = WayPoints[CurrentIndex];
@@ -53,7 +55,6 @@ void AHW05MovingPlatformBase::Move(float DeltaTime)
 
 	if (Ratio >= 1.0f)
 	{
-
 		CurrentIndex = NextTargetIndex;
 		CalcNextIndex();
 

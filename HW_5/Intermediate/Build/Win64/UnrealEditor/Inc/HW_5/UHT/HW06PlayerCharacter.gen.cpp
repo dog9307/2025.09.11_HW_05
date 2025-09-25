@@ -18,6 +18,7 @@ ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 HW_5_API UClass* Z_Construct_UClass_AHW06PlayerCharacter();
 HW_5_API UClass* Z_Construct_UClass_AHW06PlayerCharacter_NoRegister();
+HW_5_API UClass* Z_Construct_UClass_UOverlapableGimmickInterface_NoRegister();
 UPackage* Z_Construct_UPackage__Script_HW_5();
 // End Cross Module References
 
@@ -110,6 +111,11 @@ struct Z_Construct_UClass_AHW06PlayerCharacter_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/HW06PlayerCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InteractRange_MetaData[] = {
+		{ "Category", "Player|Components" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/HW06PlayerCharacter.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NormalSpeed_MetaData[] = {
 		{ "Category", "Player|Movement" },
 #if !UE_BUILD_SHIPPING
@@ -146,7 +152,7 @@ struct Z_Construct_UClass_AHW06PlayerCharacter_Statics
 		{ "Category", "Player|Jump" },
 		{ "ModuleRelativePath", "Public/HW06PlayerCharacter.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_JumpAccel_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxJumpingDuration_MetaData[] = {
 		{ "Category", "Player|Jump" },
 		{ "ModuleRelativePath", "Public/HW06PlayerCharacter.h" },
 	};
@@ -175,13 +181,14 @@ struct Z_Construct_UClass_AHW06PlayerCharacter_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Skeletal;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpringArmComp;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_InteractRange;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_NormalSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_SprintMultiplier;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_SprintSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_CurrentSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_JumpSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_Gravity;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_JumpAccel;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxJumpingDuration;
 	static void NewProp_bIsFalling_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsFalling;
 	static void NewProp_bIsCanDoubleJump_SetBit(void* Obj);
@@ -195,6 +202,7 @@ struct Z_Construct_UClass_AHW06PlayerCharacter_Statics
 		{ &Z_Construct_UFunction_AHW06PlayerCharacter_IsFalling, "IsFalling" }, // 2522621122
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
+	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AHW06PlayerCharacter>::IsAbstract,
 	};
@@ -204,13 +212,14 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHW06PlayerCha
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_Skeletal = { "Skeletal", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, Skeletal), Z_Construct_UClass_USkeletalMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Skeletal_MetaData), NewProp_Skeletal_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_SpringArmComp = { "SpringArmComp", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, SpringArmComp), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpringArmComp_MetaData), NewProp_SpringArmComp_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_CameraComp = { "CameraComp", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, CameraComp), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CameraComp_MetaData), NewProp_CameraComp_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_InteractRange = { "InteractRange", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, InteractRange), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InteractRange_MetaData), NewProp_InteractRange_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_NormalSpeed = { "NormalSpeed", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, NormalSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NormalSpeed_MetaData), NewProp_NormalSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_SprintMultiplier = { "SprintMultiplier", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, SprintMultiplier), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SprintMultiplier_MetaData), NewProp_SprintMultiplier_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_SprintSpeed = { "SprintSpeed", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, SprintSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SprintSpeed_MetaData), NewProp_SprintSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_CurrentSpeed = { "CurrentSpeed", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, CurrentSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentSpeed_MetaData), NewProp_CurrentSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_JumpSpeed = { "JumpSpeed", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, JumpSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_JumpSpeed_MetaData), NewProp_JumpSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_Gravity = { "Gravity", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, Gravity), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Gravity_MetaData), NewProp_Gravity_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_JumpAccel = { "JumpAccel", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, JumpAccel), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_JumpAccel_MetaData), NewProp_JumpAccel_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_MaxJumpingDuration = { "MaxJumpingDuration", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHW06PlayerCharacter, MaxJumpingDuration), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxJumpingDuration_MetaData), NewProp_MaxJumpingDuration_MetaData) };
 void Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_bIsFalling_SetBit(void* Obj)
 {
 	((AHW06PlayerCharacter*)Obj)->bIsFalling = 1;
@@ -229,13 +238,14 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AHW06Play
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_Skeletal,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_SpringArmComp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_CameraComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_InteractRange,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_NormalSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_SprintMultiplier,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_SprintSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_CurrentSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_JumpSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_Gravity,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_JumpAccel,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_MaxJumpingDuration,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_bIsFalling,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_bIsCanDoubleJump,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHW06PlayerCharacter_Statics::NewProp_Direction,
@@ -248,6 +258,9 @@ UObject* (*const Z_Construct_UClass_AHW06PlayerCharacter_Statics::DependentSingl
 	(UObject* (*)())Z_Construct_UPackage__Script_HW_5,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AHW06PlayerCharacter_Statics::DependentSingletons) < 16);
+const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::InterfaceParams[] = {
+	{ Z_Construct_UClass_UOverlapableGimmickInterface_NoRegister, (int32)VTABLE_OFFSET(AHW06PlayerCharacter, IOverlapableGimmickInterface), false },  // 3409007364
+};
 const UECodeGen_Private::FClassParams Z_Construct_UClass_AHW06PlayerCharacter_Statics::ClassParams = {
 	&AHW06PlayerCharacter::StaticClass,
 	"Game",
@@ -255,11 +268,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AHW06PlayerCharacter_St
 	DependentSingletons,
 	FuncInfo,
 	Z_Construct_UClass_AHW06PlayerCharacter_Statics::PropPointers,
-	nullptr,
+	InterfaceParams,
 	UE_ARRAY_COUNT(DependentSingletons),
 	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_AHW06PlayerCharacter_Statics::PropPointers),
-	0,
+	UE_ARRAY_COUNT(InterfaceParams),
 	0x009000A4u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AHW06PlayerCharacter_Statics::Class_MetaDataParams), Z_Construct_UClass_AHW06PlayerCharacter_Statics::Class_MetaDataParams)
 };
@@ -283,10 +296,10 @@ AHW06PlayerCharacter::~AHW06PlayerCharacter() {}
 struct Z_CompiledInDeferFile_FID_SpartaCoding_SpartaCoding_2025_09_11_HW_05_2025_09_11_HW_05_HW_5_Source_HW_5_Public_HW06PlayerCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AHW06PlayerCharacter, AHW06PlayerCharacter::StaticClass, TEXT("AHW06PlayerCharacter"), &Z_Registration_Info_UClass_AHW06PlayerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHW06PlayerCharacter), 2420613637U) },
+		{ Z_Construct_UClass_AHW06PlayerCharacter, AHW06PlayerCharacter::StaticClass, TEXT("AHW06PlayerCharacter"), &Z_Registration_Info_UClass_AHW06PlayerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHW06PlayerCharacter), 3927589893U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SpartaCoding_SpartaCoding_2025_09_11_HW_05_2025_09_11_HW_05_HW_5_Source_HW_5_Public_HW06PlayerCharacter_h_2362357926(TEXT("/Script/HW_5"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SpartaCoding_SpartaCoding_2025_09_11_HW_05_2025_09_11_HW_05_HW_5_Source_HW_5_Public_HW06PlayerCharacter_h_3827131112(TEXT("/Script/HW_5"),
 	Z_CompiledInDeferFile_FID_SpartaCoding_SpartaCoding_2025_09_11_HW_05_2025_09_11_HW_05_HW_5_Source_HW_5_Public_HW06PlayerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SpartaCoding_SpartaCoding_2025_09_11_HW_05_2025_09_11_HW_05_HW_5_Source_HW_5_Public_HW06PlayerCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -14,10 +14,12 @@ AHW06PlayerController::AHW06PlayerController()
 	BasicJump(nullptr),
 	BasicLook(nullptr),
 	BasicSprint(nullptr),
+	BasicInteract(nullptr),
 	HelicopterIMC(nullptr),
 	HelicopterMove(nullptr),
 	HelicopterLook(nullptr),
-	HelicopterRise(nullptr)
+	HelicopterRise(nullptr),
+	HelicopterInteract(nullptr)
 {
 }
 

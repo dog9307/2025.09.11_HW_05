@@ -34,6 +34,8 @@ protected:
 	TObjectPtr<UInputAction> BasicLook;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Basic")
 	TObjectPtr<UInputAction> BasicSprint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Basic")
+	TObjectPtr<UInputAction> BasicInteract;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
 	TObjectPtr<UInputMappingContext> HelicopterIMC;
@@ -43,16 +45,20 @@ protected:
 	TObjectPtr<UInputAction> HelicopterLook;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
 	TObjectPtr<UInputAction> HelicopterRise;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
+	TObjectPtr<UInputAction> HelicopterInteract;
 
 public:
 	inline TObjectPtr<UInputAction> GetBasicMoveAction() { return BasicMove; }
 	inline TObjectPtr<UInputAction> GetBasicJumpAction() { return BasicJump; }
 	inline TObjectPtr<UInputAction> GetBasicLookAction() { return BasicLook; }
 	inline TObjectPtr<UInputAction> GetBasicSprintAction() { return BasicSprint; }
+	inline TObjectPtr<UInputAction> GetBasicInteractAction() { return BasicInteract; }
 
 	inline TObjectPtr<UInputAction> GetHelicopterMoveAction() { return BasicMove; }
 	inline TObjectPtr<UInputAction> GetHelicopterLookAction() { return HelicopterLook; }
 	inline TObjectPtr<UInputAction> GetHelicopterRiseAction() { return HelicopterRise; }
+	inline TObjectPtr<UInputAction> GetHelicopterInteractAction() { return HelicopterInteract; }
 
 protected:
 	virtual void BeginPlay() override;

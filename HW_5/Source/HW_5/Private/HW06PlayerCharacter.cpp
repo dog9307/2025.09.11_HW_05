@@ -4,6 +4,7 @@
 #include "HW06PlayerCharacter.h"
 #include "EnhancedInputComponent.h"
 #include "HW06PlayerController.h"
+#include "HW05InteractableGimmickBase.h"
 
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -13,6 +14,8 @@
 #include "Camera/CameraComponent.h"
 
 #include "Kismet/KismetSystemLibrary.h"
+
+#include "Engine/OverlapResult.h"
 
 #include "../CommonMacros.h"
 
@@ -44,6 +47,14 @@ AHW06PlayerCharacter::AHW06PlayerCharacter()
 	CameraComp->SetupAttachment(SpringArmComp);
 	CameraComp->bUsePawnControlRotation = false;
 
+	CREATE_VALID_CHECK(UCapsuleComponent, InteractRange, TEXT("InteractRange"), );
+	InteractRange->SetCapsuleHalfHeight(Capsule->GetUnscaledCapsuleHalfHeight() / 2.0f);
+	InteractRange->SetCapsuleRadius(Capsule->GetUnscaledCapsuleRadius());
+	InteractRange->SetCollisionProfileName(TEXT("OverlapAll"));
+	InteractRange->SetSimulatePhysics(false);
+	InteractRange->SetupAttachment(Capsule);
+	InteractRange->SetRelativeLocation(FVector(InteractRange->GetUnscaledCapsuleRadius() + 1.0f, 0.0f, 0.0f));
+
 	// Properties
 	// About Move
 	NormalSpeed = 250.0f;
@@ -52,11 +63,13 @@ AHW06PlayerCharacter::AHW06PlayerCharacter()
 	CurrentSpeed = NormalSpeed;
 
 	// About Jump
-	JumpSpeed = 980.0f;
+	JumpSpeed = 420.0f;
 	Gravity = 9.8f;
-	JumpAccel = 0.0f;
+	MaxJumpingDuration = 0.5f;
 	bIsFalling = false;
 	bIsCanDoubleJump = false;
+
+	ReverseGravity = 0.0f;
 
 	Direction = FVector::ZeroVector;
 	Velocity = FVector::ZeroVector;
@@ -64,6 +77,12 @@ AHW06PlayerCharacter::AHW06PlayerCharacter()
 	// About Skeletal Rotation
 	StartMeshRot = TargetMeshRot = FRotator(0.0f, 0.0f, 0.0f);
 	RotAlpha = 0.1f;
+
+	if (IsValid(InteractRange))
+	{
+		InteractRange->OnComponentBeginOverlap.AddDynamic(this, &AHW06PlayerCharacter::OnBeginGimmickOverlap);
+		InteractRange->OnComponentEndOverlap.AddDynamic(this, &AHW06PlayerCharacter::OnEndGimmickOverlap);
+	}
 }
 
 // Called when the game starts or when spawned
@@ -85,7 +104,6 @@ void AHW06PlayerCharacter::Tick(float DeltaTime)
 
 	if (!bIsMoveInput && !IsFalling())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Why is this log nessesary??"));
 		Velocity = FVector(0.0f, 0.0f, Velocity.Z);
 	}
 
@@ -163,6 +181,24 @@ void AHW06PlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 			ETriggerEvent::Completed,
 			this,
 			&AHW06PlayerCharacter::StopSprint
+		);
+	}
+
+	Target = PlayerController->GetBasicInteractAction();
+	if (Target)
+	{
+		EnhancedInput->BindAction(
+			Target,
+			ETriggerEvent::Triggered,
+			this,
+			&AHW06PlayerCharacter::StartInteract
+		);
+
+		EnhancedInput->BindAction(
+			Target,
+			ETriggerEvent::Completed,
+			this,
+			&AHW06PlayerCharacter::StopInteract
 		);
 	}
 }
@@ -250,6 +286,8 @@ void AHW06PlayerCharacter::Move(float DeltaTime)
 		float MinDistance = VelocityXY.Length();
 		for (const auto& Hit : HitResults)
 		{
+			if (Hit.Component == InteractRange) continue;
+
 			if (MinDistance > Hit.Distance)
 			{
 				if (FMath::IsNearlyZero(Hit.Distance) && !IsFalling())
@@ -278,31 +316,56 @@ void AHW06PlayerCharacter::Move(float DeltaTime)
 	bIsMoveInput = false;
 }
 
+void AHW06PlayerCharacter::Jump()
+{
+	Velocity.Z = JumpSpeed;
+	bIsFalling = true;
+	ReverseGravity = Gravity;
+
+	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+	VALID_CHECK(UWorld, World, GetWorld(), );
+
+	World->GetTimerManager().ClearTimer(JumpingTimerHandler);
+	World->GetTimerManager().SetTimer(
+		JumpingTimerHandler,
+		this,
+		&AHW06PlayerCharacter::StopJumping,
+		MaxJumpingDuration,
+		false);
+}
+
+void AHW06PlayerCharacter::StopJumping()
+{
+	ReverseGravity = 0.0f;
+
+	VALID_CHECK(UWorld, World, GetWorld(), );
+
+	World->GetTimerManager().ClearTimer(JumpingTimerHandler);
+}
+
 void AHW06PlayerCharacter::StartJump(const FInputActionValue& value)
 {
 	if (IsCanDoubleJump())
 	{
 		if (IsFalling())
 		{
-			Velocity.Z = JumpSpeed;
+			Jump();
 			bIsCanDoubleJump = false;
-			bIsFalling = true;
 		}
 	}
 	else
 	{
 		if (!IsFalling())
 		{
-			Velocity.Z = JumpSpeed;
-			bIsFalling = true;
+			Jump();
 		}
 	}
 }
 
 void AHW06PlayerCharacter::StopJump(const FInputActionValue& value)
 {
-	if (Velocity.Z > 0.0f)
-		Velocity.Z = 0.0f;
+	StopJumping();
 }
 
 void AHW06PlayerCharacter::Look(const FInputActionValue& value)
@@ -322,11 +385,15 @@ void AHW06PlayerCharacter::Look(const FInputActionValue& value)
 
 void AHW06PlayerCharacter::StartSprint(const FInputActionValue& value)
 {
+	if (!IsFalling())
+
 	CurrentSpeed = SprintSpeed;
 }
 
 void AHW06PlayerCharacter::StopSprint(const FInputActionValue& value)
 {
+	if (!IsFalling())
+
 	CurrentSpeed = NormalSpeed;
 }
 
@@ -375,6 +442,8 @@ void AHW06PlayerCharacter::Falling(float DeltaTime)
 
 		for (const auto& Hit : HitResults)
 		{
+			if (Hit.Component == InteractRange) continue;
+
 			if (VelocityZ > Hit.Distance)
 			{
 				if (Velocity.Z > 0.0f)
@@ -383,6 +452,7 @@ void AHW06PlayerCharacter::Falling(float DeltaTime)
 					{
 						VelocityZ = 0.0f;
 						Velocity.Z = 0.0f;
+						StopJumping();
 					}
 				}
 				else
@@ -401,7 +471,7 @@ void AHW06PlayerCharacter::Falling(float DeltaTime)
 	FVector NewPos = GetActorLocation() + FVector(0.0f, 0.0f, MoveDistance);
 	SetActorLocation(NewPos);
 
-	Velocity.Z -= Gravity;
+	Velocity.Z -= (Gravity - ReverseGravity);
 }
 
 void AHW06PlayerCharacter::LandingCheck(float DeltaTime)
@@ -425,13 +495,75 @@ void AHW06PlayerCharacter::LandingCheck(float DeltaTime)
 		true
 	);
 
-	if (HitResults.Num() <= 0)
+	if (HitResults.Num() <= 0 ||
+		(HitResults.Num() <= 1 && HitResults[0].Component == InteractRange))
 	{
 		bIsFalling = true;
+
+		DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 	}
 	else
 	{
-		bIsFalling = false;
+		for (auto& Result : HitResults)
+		{
+			if (Result.Component == InteractRange) continue;
+
+			bIsFalling = false;
+
+			AttachToActor(Result.GetActor(), FAttachmentTransformRules::KeepWorldTransform);
+
+			break;
+		}
 	}
+}
+
+void AHW06PlayerCharacter::StartInteract(const FInputActionValue& value)
+{
+	VALID_CHECK(UWorld, World, GetWorld(), );
+
+	TArray<AActor*> HitActors;
+	TArray<FHitResult> HitResults;
+	FVector OriginPos = InteractRange->GetComponentLocation();
+	UKismetSystemLibrary::CapsuleTraceMultiByProfile(
+		World,
+		OriginPos,
+		OriginPos + FVector(0.0f, 0.0f, -1.0f),
+		InteractRange->GetScaledCapsuleRadius(),
+		InteractRange->GetScaledCapsuleHalfHeight(),
+		InteractRange->GetCollisionProfileName(),
+		false,
+		HitActors,
+		EDrawDebugTrace::Type::None,
+		HitResults,
+		true
+	);
+
+	for (auto& r : HitResults)
+	{
+		AHW05InteractableGimmickBase* Interact = Cast<AHW05InteractableGimmickBase>(r.GetActor());
+		if (IsValid(Interact))
+		{
+			Interact->Interact();
+			return;
+		}
+	}
+}
+
+void AHW06PlayerCharacter::StopInteract(const FInputActionValue& value)
+{
+}
+
+void AHW06PlayerCharacter::OnBeginGimmickOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& HitResult)
+{
+	CAST_VALID_CHECK(AHW05InteractableGimmickBase, Gimmick, OtherActor, );
+
+	Gimmick->StartTextFadeIn();
+}
+
+void AHW06PlayerCharacter::OnEndGimmickOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	CAST_VALID_CHECK(AHW05InteractableGimmickBase, Gimmick, OtherActor, );
+
+	Gimmick->StartTextFadeOut();
 }
 
