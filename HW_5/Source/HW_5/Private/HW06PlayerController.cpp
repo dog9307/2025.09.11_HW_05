@@ -15,11 +15,11 @@ AHW06PlayerController::AHW06PlayerController()
 	BasicLook(nullptr),
 	BasicSprint(nullptr),
 	BasicInteract(nullptr),
-	HelicopterIMC(nullptr),
-	HelicopterMove(nullptr),
-	HelicopterLook(nullptr),
-	HelicopterRise(nullptr),
-	HelicopterInteract(nullptr)
+	DroneIMC(nullptr),
+	DroneMove(nullptr),
+	DroneLook(nullptr),
+	DroneBoost(nullptr),
+	DroneInteract(nullptr)
 {
 }
 
@@ -41,21 +41,21 @@ bool AHW06PlayerController::ChangeIMC(PlayerInputMode mode)
 	VALID_CHECK(ULocalPlayer, LocalPlayer, GetLocalPlayer(), false);
 	VALID_CHECK(UEnhancedInputLocalPlayerSubsystem, SubSystem, LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(), false);
 
-	if (HelicopterIMC)
+	if (DroneIMC)
 	{
 		switch (mode)
 		{
 		case Basic:
 		{
-			SubSystem->RemoveMappingContext(HelicopterIMC);
+			SubSystem->RemoveMappingContext(DroneIMC);
 
 			return true;
 		}
 		break;
 
-		case Helicopter:
+		case Drone:
 		{
-			SubSystem->AddMappingContext(HelicopterIMC, mode);
+			SubSystem->AddMappingContext(DroneIMC, mode);
 
 			return true;
 		}

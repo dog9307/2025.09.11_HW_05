@@ -4,6 +4,8 @@
 #include "UObject/Interface.h"
 #include "InteractableInterface.generated.h"
 
+class AActor;
+
 UINTERFACE(MinimalAPI)
 class UInteractableInterface : public UInterface
 {
@@ -15,5 +17,5 @@ class HW_5_API IInteractableInterface
 	GENERATED_BODY()
 
 public:
-	virtual void Interact() = 0;
+	virtual void Interact(AActor* InteractFrom) = 0;
 };

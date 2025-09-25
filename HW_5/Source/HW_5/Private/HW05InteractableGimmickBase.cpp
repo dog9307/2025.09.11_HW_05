@@ -142,6 +142,6 @@ void AHW05InteractableGimmickBase::AlphaChange(float Alpha)
 	Text->SetTextRenderColor(Color);
 }
 
-void AHW05InteractableGimmickBase::Interact()
+void AHW05InteractableGimmickBase::Interact(AActor* InteractFrom)
 {
 }

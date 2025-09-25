@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HW_5ModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9a7defe2f5286d53e41689ba305edff78717c12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c141a5f4e688936fda75ab864ed3a1f9f2426a22")]
 [assembly: System.Reflection.AssemblyProductAttribute("HW_5ModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HW_5ModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

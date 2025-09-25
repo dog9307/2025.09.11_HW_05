@@ -12,6 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\West_Heli_UH60A.png" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -63,13 +64,34 @@
     <ClCompile Include="..\..\Source\HW_5\Private\HW05InteractableGimmickBase.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05ItemBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05ItemDoubleJump.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05ItemKey.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW05MovingPlatformBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05OverlapableGimmickBase.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05Portal.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW05RotatingMovingPlatform.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW05SuperJumpPlane.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW05WayPointInfo.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\HW06Drone.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\HW06PlayerCharacter.cpp">
@@ -79,6 +101,9 @@
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\InteractableInterface.cpp">
+      <Filter>Source\HW_5\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Private\LockableInterface.cpp">
       <Filter>Source\HW_5\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Private\OverlapableGimmickInterface.cpp">
@@ -105,13 +130,34 @@
     <ClCompile Include="..\..\Source\HW_5\Public\HW05InteractableGimmickBase.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05ItemBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05ItemDoubleJump.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05ItemKey.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW05MovingPlatformBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05OverlapableGimmickBase.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05Portal.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW05RotatingMovingPlatform.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW05SuperJumpPlane.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW05WayPointInfo.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\HW06Drone.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\HW06PlayerCharacter.h">
@@ -121,6 +167,9 @@
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\InteractableInterface.h">
+      <Filter>Source\HW_5\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HW_5\Public\LockableInterface.h">
       <Filter>Source\HW_5\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HW_5\Public\OverlapableGimmickInterface.h">

@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\intermediate\\build\\win64\\unrealeditor\\inc\\hw_5\\uht\\hw05overlapablegimmickbase.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\intermediate\\build\\win64\\x64\\hw_5editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\hw_5\\definitions.hw_5.h",
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\source\\hw_5\\public\\hw05overlapablegimmickbase.h",
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\source\\hw_5\\public\\hw05gimmickbase.h",
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\intermediate\\build\\win64\\unrealeditor\\inc\\hw_5\\uht\\hw05gimmickbase.generated.h",
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\source\\hw_5\\public\\overlapablegimmickinterface.h",
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\intermediate\\build\\win64\\unrealeditor\\inc\\hw_5\\uht\\overlapablegimmickinterface.generated.h",
+            "c:\\spartacoding\\spartacoding\\2025.09.11_hw_05\\2025.09.11_hw_05\\hw_5\\intermediate\\build\\win64\\unrealeditor\\inc\\hw_5\\uht\\hw05overlapablegimmickbase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

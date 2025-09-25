@@ -24,6 +24,6 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	virtual void Interact() override;
+	virtual void Interact(AActor* InteractFrom) override;
 
 };

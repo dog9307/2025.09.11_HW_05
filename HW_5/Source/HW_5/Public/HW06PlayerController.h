@@ -11,7 +11,7 @@ enum PlayerInputMode
 {
 	NONE = -1,
 	Basic,
-	Helicopter,
+	Drone,
 	END
 };
 
@@ -37,16 +37,16 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Basic")
 	TObjectPtr<UInputAction> BasicInteract;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
-	TObjectPtr<UInputMappingContext> HelicopterIMC;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
-	TObjectPtr<UInputAction> HelicopterMove;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
-	TObjectPtr<UInputAction> HelicopterLook;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
-	TObjectPtr<UInputAction> HelicopterRise;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Helicopter")
-	TObjectPtr<UInputAction> HelicopterInteract;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Drone")
+	TObjectPtr<UInputMappingContext> DroneIMC;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Drone")
+	TObjectPtr<UInputAction> DroneMove;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Drone")
+	TObjectPtr<UInputAction> DroneLook;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Drone")
+	TObjectPtr<UInputAction> DroneBoost;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|Drone")
+	TObjectPtr<UInputAction> DroneInteract;
 
 public:
 	inline TObjectPtr<UInputAction> GetBasicMoveAction() { return BasicMove; }
@@ -55,10 +55,10 @@ public:
 	inline TObjectPtr<UInputAction> GetBasicSprintAction() { return BasicSprint; }
 	inline TObjectPtr<UInputAction> GetBasicInteractAction() { return BasicInteract; }
 
-	inline TObjectPtr<UInputAction> GetHelicopterMoveAction() { return BasicMove; }
-	inline TObjectPtr<UInputAction> GetHelicopterLookAction() { return HelicopterLook; }
-	inline TObjectPtr<UInputAction> GetHelicopterRiseAction() { return HelicopterRise; }
-	inline TObjectPtr<UInputAction> GetHelicopterInteractAction() { return HelicopterInteract; }
+	inline TObjectPtr<UInputAction> GetDroneMoveAction() { return DroneMove; }
+	inline TObjectPtr<UInputAction> GetDroneLookAction() { return DroneLook; }
+	inline TObjectPtr<UInputAction> GetDroneBoostAction() { return DroneBoost; }
+	inline TObjectPtr<UInputAction> GetDroneInteractAction() { return DroneInteract; }
 
 protected:
 	virtual void BeginPlay() override;

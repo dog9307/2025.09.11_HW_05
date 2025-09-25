@@ -1,7 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "HW06PlayerCharacter.h"
+
 #include "EnhancedInputComponent.h"
 #include "HW06PlayerController.h"
 #include "HW05InteractableGimmickBase.h"
@@ -9,22 +7,16 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 
-#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 
 #include "Kismet/KismetSystemLibrary.h"
 
-#include "Engine/OverlapResult.h"
-
 #include "../CommonMacros.h"
 
-// Sets default values
 AHW06PlayerCharacter::AHW06PlayerCharacter()
 {
-	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 
 	// Create Components
 	CREATE_VALID_CHECK(UCapsuleComponent, Capsule, TEXT("Capsule"), );
@@ -85,7 +77,6 @@ AHW06PlayerCharacter::AHW06PlayerCharacter()
 	}
 }
 
-// Called when the game starts or when spawned
 void AHW06PlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
@@ -97,7 +88,6 @@ void AHW06PlayerCharacter::BeginPlay()
 	}
 }
 
-// Called every frame
 void AHW06PlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -116,7 +106,6 @@ void AHW06PlayerCharacter::Tick(float DeltaTime)
 	LandingCheck(DeltaTime);
 }
 
-// Called to bind functionality to input
 void AHW06PlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -142,7 +131,7 @@ void AHW06PlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 	{
 		EnhancedInput->BindAction(
 			Target,
-			ETriggerEvent::Triggered,
+			ETriggerEvent::Started,
 			this,
 			&AHW06PlayerCharacter::StartJump
 		);
@@ -335,6 +324,25 @@ void AHW06PlayerCharacter::Jump()
 		false);
 }
 
+void AHW06PlayerCharacter::Jump(float JumpPower)
+{
+	Velocity.Z = JumpPower;
+	bIsFalling = true;
+	ReverseGravity = Gravity;
+
+	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+	VALID_CHECK(UWorld, World, GetWorld(), );
+
+	World->GetTimerManager().ClearTimer(JumpingTimerHandler);
+	World->GetTimerManager().SetTimer(
+		JumpingTimerHandler,
+		this,
+		&AHW06PlayerCharacter::StopJumping,
+		MaxJumpingDuration,
+		false);
+}
+
 void AHW06PlayerCharacter::StopJumping()
 {
 	ReverseGravity = 0.0f;
@@ -346,13 +354,11 @@ void AHW06PlayerCharacter::StopJumping()
 
 void AHW06PlayerCharacter::StartJump(const FInputActionValue& value)
 {
-	if (IsCanDoubleJump())
+	UE_LOG(LogTemp, Warning, TEXT("JUMP"));
+	if (IsFalling() && IsCanDoubleJump())
 	{
-		if (IsFalling())
-		{
-			Jump();
-			bIsCanDoubleJump = false;
-		}
+		Jump();
+		bIsCanDoubleJump = false;
 	}
 	else
 	{
@@ -365,6 +371,7 @@ void AHW06PlayerCharacter::StartJump(const FInputActionValue& value)
 
 void AHW06PlayerCharacter::StopJump(const FInputActionValue& value)
 {
+	UE_LOG(LogTemp, Warning, TEXT("JUMP END"));
 	StopJumping();
 }
 
@@ -540,10 +547,10 @@ void AHW06PlayerCharacter::StartInteract(const FInputActionValue& value)
 
 	for (auto& r : HitResults)
 	{
-		AHW05InteractableGimmickBase* Interact = Cast<AHW05InteractableGimmickBase>(r.GetActor());
-		if (IsValid(Interact))
+		IInteractableInterface* Interact = Cast<IInteractableInterface>(r.GetActor());
+		if (Interact)
 		{
-			Interact->Interact();
+			Interact->Interact(this);
 			return;
 		}
 	}

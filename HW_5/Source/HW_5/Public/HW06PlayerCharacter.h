@@ -15,6 +15,9 @@ class HW_5_API AHW06PlayerCharacter : public APawn, public IOverlapableGimmickIn
 {
 	GENERATED_BODY()
 
+public:
+	AHW06PlayerCharacter();
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player|Components")
 	TObjectPtr<UCapsuleComponent> Capsule;
@@ -67,19 +70,12 @@ protected:
 	float RotAlpha;
 
 
-public:
-	// Sets default values for this pawn's properties
-	AHW06PlayerCharacter();
-
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
@@ -90,6 +86,7 @@ public:
 	void StopSprint(const FInputActionValue& value);
 
 	void Jump();
+	void Jump(float JumpPower);
 	void StopJumping();
 	void StartJump(const FInputActionValue& value);
 	void StopJump(const FInputActionValue& value);
@@ -105,7 +102,8 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Movement")
 	inline bool IsFalling() const { return bIsFalling; }
 	inline bool IsCanDoubleJump() const { return bIsCanDoubleJump; }
-	inline void SetDoubleJump(bool& isCan) { bIsCanDoubleJump = isCan; }
+	inline void SetDoubleJump(const bool& isCan) { bIsCanDoubleJump = isCan; }
+	inline void SetVelocity(const FVector& vel) { Velocity = vel; }
 
 
 	void OnBeginGimmickOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& HitResult) override;

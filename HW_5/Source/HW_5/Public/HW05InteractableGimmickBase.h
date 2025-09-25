@@ -39,7 +39,7 @@ public:
 	void IncreaseTextAlpha();
 	void DecreaseTextAlpha();
 
-	virtual void Interact() override;
+	virtual void Interact(AActor* InteractFrom) override;
 
 protected:
 	void AlphaChange(float Alpha);
